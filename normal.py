@@ -60,19 +60,7 @@ while True:
     data = stream.read(CHUNK)  
     # convert data to integers, make np array, then offset it by 127
     data_int = struct.unpack(str(2 * CHUNK) + 'B', data)
-    data_int=list(data_int)
     print("Data real:",data_int[0])
-    for x,i in enumerate(data_int):
-        distancia=i-128#conseguir distancia que hay hasta el centro ya sea positiva o negativa
-        
-        i=(-1)*distancia
-        if i==128:
-            i=0
-        data_int[x]=i
-
-    ##TODO: Create the inverse wave based on the numbers
-    print("Data inversa:",data_int[0])
-
     # create np array and offset by 128
     data_np = np.array(data_int, dtype='b')[::2] + 128
     
